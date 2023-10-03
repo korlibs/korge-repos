@@ -52,4 +52,20 @@ tasks {
             }
         }
     }
+    val makeGradlewExecutable by creating {
+        doLast {
+            for (file in gitSubmodules) {
+                print("FILE: $file...")
+
+                if (File(file, "gradlew").isFile) {
+                    file.git("update-index", "--chmod=+x", "gradlew")
+                    file.git("commit", "-m", "Make gradlew executable", fail = false)
+                    file.git("push")
+                    println("DONE")
+                } else {
+                    println("DO NOT EXISTS")
+                }
+            }
+        }
+    }
 }
