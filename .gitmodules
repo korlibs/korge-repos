@@ -1,0 +1,108 @@
+[submodule "korge-box2d"]
+	path = korge-box2d
+	url = git@github.com:korlibs/korge-box2d.git
+[submodule "korge-starter-kit-platformer"]
+	path = korge-starter-kit-platformer
+	url = git@github.com:korlibs/korge-starter-kit-platformer.git
+[submodule "korge-hello-world"]
+	path = korge-hello-world
+	url = git@github.com:korlibs/korge-hello-world.git
+[submodule "korge-hello-world-client-server"]
+	path = korge-hello-world-client-server
+	url = git@github.com:korlibs/korge-hello-world-client-server.git
+[submodule "korge-starter-kit-compose"]
+	path = korge-starter-kit-compose
+	url = git@github.com:korlibs/korge-starter-kit-compose.git
+[submodule "korge-starter-kit-rpg"]
+	path = korge-starter-kit-rpg
+	url = git@github.com:korlibs/korge-starter-kit-rpg.git
+[submodule "korge-fleks-hello-world"]
+	path = korge-fleks-hello-world
+	url = git@github.com:korlibs/korge-fleks-hello-world.git
+[submodule "2048"]
+	path = 2048
+	url = git@github.com:korge-showcases/2048.git
+[submodule "Candy-Crush-Clone"]
+	path = Candy-Crush-Clone
+	url = git@github.com:korge-showcases/Candy-Crush-Clone.git
+[submodule "korge-chess"]
+	path = korge-chess
+	url = git@github.com:korge-showcases/korge-chess.git
+[submodule "paf"]
+	path = paf
+	url = git@github.com:korge-showcases/paf.git
+[submodule "XenoTacticKProject"]
+	path = XenoTacticKProject
+	url = git@github.com:korge-showcases/XenoTacticKProject.git
+[submodule "korge-free-assets"]
+	path = korge-free-assets
+	url = git@github.com:korlibs/korge-free-assets.git
+[submodule "korge-free-gfx"]
+	path = korge-free-gfx
+	url = git@github.com:korlibs/korge-free-gfx.git
+[submodule "korge-free-sfx"]
+	path = korge-free-sfx
+	url = git@github.com:korlibs/korge-free-sfx.git
+[submodule "korge-k3d"]
+	path = korge-k3d
+	url = git@github.com:korlibs/korge-k3d.git
+[submodule "korge-swf"]
+	path = korge-swf
+	url = git@github.com:korlibs/korge-swf.git
+[submodule "korge-jitto"]
+	path = korge-jitto
+	url = git@github.com:korlibs/korge-jitto.git
+[submodule "korge-audio-formats"]
+	path = korge-audio-formats
+	url = git@github.com:korlibs/korge-audio-formats.git
+[submodule "korge-fleks"]
+	path = korge-fleks
+	url = git@github.com:korlibs/korge-fleks.git
+[submodule "korge-ext"]
+	path = korge-ext
+	url = git@github.com:korlibs/korge-ext.git
+[submodule "korge-image-formats"]
+	path = korge-image-formats
+	url = git@github.com:korlibs/korge-image-formats.git
+[submodule "korge-virtualcontroller"]
+	path = korge-virtualcontroller
+	url = git@github.com:korlibs/korge-virtualcontroller.git
+[submodule "korge-monetization"]
+	path = korge-monetization
+	url = git@github.com:korlibs/korge-monetization.git
+[submodule "korge-lipsync"]
+	path = korge-lipsync
+	url = git@github.com:korlibs/korge-lipsync.git
+[submodule "korge-parallax"]
+	path = korge-parallax
+	url = git@github.com:korlibs/korge-parallax.git
+[submodule "korge-particles"]
+	path = korge-particles
+	url = git@github.com:korlibs/korge-particles.git
+[submodule "korma-triangulator"]
+	path = korma-triangulator
+	url = git@github.com:korlibs/korma-triangulator.git
+[submodule "korge-luak"]
+	path = korge-luak
+	url = git@github.com:korlibs/korge-luak.git
+[submodule "korge-dragonbones"]
+	path = korge-dragonbones
+	url = git@github.com:korlibs/korge-dragonbones.git
+[submodule "korge-spine"]
+	path = korge-spine
+	url = git@github.com:korlibs/korge-spine.git
+[submodule "korge-ldtk"]
+	path = korge-ldtk
+	url = git@github.com:korlibs/korge-ldtk.git
+[submodule "korge-tiled"]
+	path = korge-tiled
+	url = git@github.com:korlibs/korge-tiled.git
+[submodule "korge-compose"]
+	path = korge-compose
+	url = git@github.com:korlibs/korge-compose.git
+[submodule "korge-kjsmpeg"]
+	path = korge-kjsmpeg
+	url = git@github.com:korlibs/korge-kjsmpeg.git
+[submodule "korge-video"]
+	path = korge-video
+	url = git@github.com:korlibs/korge-video.git
