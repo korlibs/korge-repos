@@ -11,6 +11,10 @@ fun File.isNewTemplate(): Boolean {
     return "com.soywiz.korge.settings:com.soywiz.korge.settings.gradle.plugin" in file.readText()
 }
 
+fun File.execGetStringResult(vararg commandline: String): String {
+    return ProcessBuilder(*commandline).directory(this).start().inputStream.readBytes().toString(Charsets.UTF_8)
+}
+
 fun File.exec(vararg commandline: String, fail: Boolean = true, cmd: Boolean = true) {
     println("${commandline.joinToString(" ")}")
     try {
@@ -27,6 +31,21 @@ fun File.exec(vararg commandline: String, fail: Boolean = true, cmd: Boolean = t
     } catch (e: Throwable) {
         if (fail) throw e
     }
+}
+
+fun incrementPatchVersion(version: String): String? {
+    val range = Regex("(\\d+)").findAll(version).toList().lastOrNull() ?: return null
+    return version.replaceRange(range.range, "${range.value.toInt() + 1}")
+}
+
+fun File.findLatestGitTag(): String {
+    val commitId = execGetStringResult("git", "rev-list", "--tags", "--max-count=1").trim()
+    val tag = execGetStringResult("git", "describe", "--tags", commitId).trim()
+    return tag
+}
+
+fun File.numberOfCommitsSinceTag(tag: String): Int {
+    return execGetStringResult("git", "rev-list", "$tag..HEAD", "--count").trim().toInt()
 }
 
 fun File.git(vararg args: String, fail: Boolean = true) = exec("git", *args, fail = fail)
@@ -144,6 +163,33 @@ tasks {
                 } else {
                     println("DO NOT EXISTS")
                 }
+            }
+        }
+    }
+    val incrementPatchAll by creating {
+        doLast {
+            for (file in gitSubmodules) {
+                print("FILE: $file...")
+                file.execGetStringResult("git", "checkout", "main")
+                file.execGetStringResult("git", "fetch")
+                file.execGetStringResult("git", "reset", "--hard", "origin/main")
+                file.execGetStringResult("git", "pull")
+                val lastTag = file.findLatestGitTag()
+                val nextTag = incrementPatchVersion(lastTag)
+                val ncommits = file.numberOfCommitsSinceTag(lastTag)
+                if (nextTag == null) {
+                    println("NO TAG")
+                    continue
+                }
+                if (ncommits == 0) {
+                    println("ALREADY IN LATEST ($lastTag) [$ncommits]")
+                    continue
+                }
+                println("$lastTag -> $nextTag [$ncommits]")
+                file.execGetStringResult("gh", "release", "create", nextTag, "--generate-notes")
+                //gh release create v1.2.3 --generate-notes
+                //file.execGetStringResult("git", "tag", "-a", nextTag)
+                //file.execGetStringResult("git", "push", "origin", "--tags")
             }
         }
     }
