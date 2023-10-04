@@ -11,8 +11,14 @@ fun File.isNewTemplate(): Boolean {
     return "com.soywiz.korge.settings:com.soywiz.korge.settings.gradle.plugin" in file.readText()
 }
 
-fun File.execGetStringResult(vararg commandline: String): String {
-    return ProcessBuilder(*commandline).directory(this).start().inputStream.readBytes().toString(Charsets.UTF_8)
+fun File.execGetStringResult(vararg commandline: String, cmd: Boolean = true): String {
+    return ProcessBuilder(*buildList {
+        if (cmd && Os.isFamily(Os.FAMILY_WINDOWS)) {
+            add("cmd.exe")
+            add("/c")
+        }
+        addAll(commandline)
+    }.toTypedArray()).directory(this).start().inputStream.readBytes().toString(Charsets.UTF_8)
 }
 
 fun File.exec(vararg commandline: String, fail: Boolean = true, cmd: Boolean = true) {
@@ -186,10 +192,10 @@ tasks {
                     continue
                 }
                 println("$lastTag -> $nextTag [$ncommits]")
-                file.execGetStringResult("gh", "release", "create", nextTag, "--generate-notes")
+                file.exec("gh", "release", "create", nextTag, "--generate-notes")
                 //gh release create v1.2.3 --generate-notes
-                //file.execGetStringResult("git", "tag", "-a", nextTag)
-                //file.execGetStringResult("git", "push", "origin", "--tags")
+                //file.exec("git", "tag", "-a", nextTag)
+                //file.exec("git", "push", "origin", "--tags")
             }
         }
     }
