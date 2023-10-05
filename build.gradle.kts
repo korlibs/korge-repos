@@ -125,7 +125,7 @@ tasks {
                     continue
                 }
 
-                val newKorgeVersion = "5.0.4"
+                val newKorgeVersion = "5.0.5"
                 val libsVersionsTomlText = libsVersionsToml.readText()
                 val regeex = Regex("^korge = \\{ id = \"com.soywiz.korge\", version = \"(.*?)\" \\}", RegexOption.MULTILINE)
                 val regeex2 = Regex("^#korge = \\{ id = \"com.soywiz.korge\", version = \"(.*?)\" \\}", RegexOption.MULTILINE)
